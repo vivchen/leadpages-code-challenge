@@ -4,14 +4,15 @@ import { Snackbar, IconButton, Button } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 
 export default function ToastNotification({ 
-    open = false, 
     handleClose = () => {}, 
+    handleLike = () => {},
+    open = false, 
     submission = null 
 }) {
     
     const action = (
       <>
-        <Button color="secondary" size="small" onClick={() => {console.log('liked')}}>
+        <Button color="secondary" size="small" onClick={handleLike}>
           LIKE
         </Button>
         <IconButton
