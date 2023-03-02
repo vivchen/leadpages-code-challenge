@@ -3,8 +3,12 @@ import Box from '@mui/material/Box';
 import { Snackbar, IconButton, Button } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 
-export default function ToastNotification({ open = false, handleClose = () => {} }) {
-
+export default function ToastNotification({ 
+    open = false, 
+    handleClose = () => {}, 
+    submission = null 
+}) {
+    
     const action = (
       <>
         <Button color="secondary" size="small" onClick={() => {console.log('liked')}}>
@@ -21,13 +25,22 @@ export default function ToastNotification({ open = false, handleClose = () => {}
       </>
     );
 
+    const notificationText = (
+        submission ? (
+            <>
+              <span style={{display: "block"}}>{`${submission.data.firstName} ${submission.data.lastName}`}</span>
+              <span style={{display: "block"}}>{submission.data.email}</span>
+            </>
+          ) : ''
+    )
+
     return (
       <Box sx={{flexGrow: 1}}>
         <Snackbar
           open={open}
           autoHideDuration={5000}
           onClose={handleClose}
-          message={'test'}
+          message={notificationText}
           action={action}
         />
       </Box>

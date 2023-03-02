@@ -8,6 +8,7 @@ import ToastNotification from './ToastNotification';
 function App() {
 
   const [isToastOpen, setToastOpen] = useState(false);
+  const [currSubmission, setCurrSubmission] = useState(null);
 
   const handleSnackbarClose = () => {
     setToastOpen(false);
@@ -15,12 +16,16 @@ function App() {
 
   return (
     <>
-      <Header setToastOpen={setToastOpen} />
+      <Header 
+        setToastOpen={setToastOpen} 
+        setSubmission={setCurrSubmission} 
+      />
       <Container>
         <Content />
         <ToastNotification
           open={isToastOpen}
           handleClose={handleSnackbarClose}
+          submission={currSubmission}
         />
       </Container>
     </>
