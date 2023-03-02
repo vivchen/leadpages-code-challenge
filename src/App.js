@@ -9,8 +9,11 @@ import { saveLikedFormSubmission } from './service/mockServer';
 
 function App() {
 
+  const storedSubmissions = JSON.parse(localStorage.getItem('formSubmissions'));
   const [isToastOpen, setToastOpen] = useState(false);
   const [currSubmission, setCurrSubmission] = useState(null);
+  
+  console.log('stored submissions', storedSubmissions);
 
   const handleLike = () => {
     saveLikedFormSubmission(currSubmission)
