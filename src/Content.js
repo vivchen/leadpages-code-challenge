@@ -12,8 +12,6 @@ export default function Content({ likedSubmissions =  {} }) {
   return (
     <Box sx={{marginTop: 3}}>
       <Typography variant="h4">Liked Form Submissions</Typography>
-
-      <Typography variant="body1" sx={{fontStyle: 'italic', marginTop: 1}}>
         <TableContainer>
           <Table>
             <TableHead>
@@ -25,10 +23,9 @@ export default function Content({ likedSubmissions =  {} }) {
             </TableHead>
             <TableBody>
               { likedSubmissions ? 
-                // todo: add unique key
                 likedSubmissions.map((submission) => {
                   return (
-                    <TableRow>
+                    <TableRow key={submission.id}>
                       <TableCell>{`${submission.data.firstName} ${submission.data.lastName}`}</TableCell>
                       <TableCell>{submission.data.email}</TableCell>
                       <TableCell>{submission.id}</TableCell>
@@ -39,7 +36,6 @@ export default function Content({ likedSubmissions =  {} }) {
             </TableBody>
           </Table>
         </TableContainer>
-      </Typography>
     </Box>
   );
 }
