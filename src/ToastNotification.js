@@ -46,11 +46,12 @@ export default function ToastNotification({
     return (
       <Box sx={{flexGrow: 1}}>
         <Snackbar
-          open={open}
-          autoHideDuration={5000}
-          onClose={handleClose}
-          message={notificationText()}
-          action={action}
+            data-testid = "toast-notif"
+            open={open}
+            autoHideDuration={5000}
+            onClose={handleClose}
+            message={notificationText()}
+            action={action}
         />
       </Box>
     );
