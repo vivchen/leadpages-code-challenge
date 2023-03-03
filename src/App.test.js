@@ -1,7 +1,9 @@
 import React from 'react';
 import { screen, render, waitFor } from '@testing-library/react';
-import App from './App';
 import userEvent from '@testing-library/user-event'
+
+import App from './App';
+
 
 test('renders header text', () => {
   render(<App />);
