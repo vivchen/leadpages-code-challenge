@@ -46,6 +46,7 @@ export default function ToastNotification({
     return (
       <Box sx={{flexGrow: 1}}>
         <Snackbar
+            anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
             data-testid = "toast-notif"
             open={open}
             autoHideDuration={5000}
