@@ -17,6 +17,7 @@ function App() {
 
   const handleLike = () => {
     saveLikedFormSubmission(currSubmission)
+    setLikedSubmissions(likedSubmissions => [...likedSubmissions, currSubmission]);
   }
 
   const handleSnackbarClose = () => {
