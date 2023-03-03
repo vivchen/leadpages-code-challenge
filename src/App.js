@@ -12,7 +12,7 @@ function App() {
   const storedSubmissions = JSON.parse(localStorage.getItem('formSubmissions'));
   const [currSubmission, setCurrSubmission] = useState(null);
   const [isToastOpen, setToastOpen] = useState(false);
-  const [likedSubmissions, setLikedSubmissions] = useState(storedSubmissions);
+  const [likedSubmissions, setLikedSubmissions] = useState(storedSubmissions ? storedSubmissions : []);
   
 
   const handleLike = () => {
