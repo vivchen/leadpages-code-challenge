@@ -11,17 +11,24 @@ function App() {
 
   const storedSubmissions = JSON.parse(localStorage.getItem('formSubmissions'));
   const [currSubmission, setCurrSubmission] = useState(null);
+  const [error, setError] = useState(null);
   const [isToastOpen, setToastOpen] = useState(false);
   const [likedSubmissions, setLikedSubmissions] = useState(storedSubmissions ? storedSubmissions : []);
-  
 
   const handleLike = () => {
     saveLikedFormSubmission(currSubmission)
-    setLikedSubmissions(likedSubmissions => [...likedSubmissions, currSubmission]);
+    .then(() => {
+      setError(null);
+      setLikedSubmissions(likedSubmissions => [...likedSubmissions, currSubmission]);
+    })
+    .catch((err) => {
+      setError(err);
+    });
   }
 
   const handleSnackbarClose = () => {
     setToastOpen(false);
+    setError(null);
   }
 
   return (
@@ -33,6 +40,7 @@ function App() {
       <Container>
         <Content likedSubmissions={likedSubmissions} />
         <ToastNotification
+          error={error}
           handleClose={handleSnackbarClose}
           handleLike={handleLike} 
           open={isToastOpen}
